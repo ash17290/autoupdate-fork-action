@@ -1,0 +1,16 @@
+name: test comment
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get event payload
+        run: |
+          echo "${{ github.event.issue.pull_request }}"
+          echo "${{ github.event.comment }}"
+          echo "${{ github.event.issue.node_id }}"
+          # Get payload from event
+          cd /home/runner/work/_temp/_github_workflow
+          cat event.json
